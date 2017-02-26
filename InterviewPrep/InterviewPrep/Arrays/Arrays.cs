@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InterviewPrep.Recursion
+namespace InterviewPrep.Arrays
 {
     public class DoubleArray
     {

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using InterviewPrep.Recursion;
-using ProgrIntervExposed.Tree;
-using InterviewPrep.StringsArrays;
+using InterviewPrep.Tree;
+using InterviewPrep.Arrays;
 
 namespace InterviewPrep
 {

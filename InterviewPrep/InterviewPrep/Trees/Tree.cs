@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ProgrIntervExposed.Tree
+namespace InterviewPrep.Tree
 {
     public class Node
     {
