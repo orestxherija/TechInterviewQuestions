@@ -22,10 +22,6 @@ namespace ProgrIntervExposed.Tree
             this.Value = value;
         }
 
-        /// <summary>
-        /// Traverses a tree in some order.
-        /// </summary>
-        /// <param name="root">The root noed of the tree.</param>
         public static void PreorderTraverseRecurse(Node root)
         {
             if (root != null)
