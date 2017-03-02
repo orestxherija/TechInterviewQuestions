@@ -55,14 +55,6 @@ namespace InterviewPrep.Arrays
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="array"></param>
-        /// <param name="lower"></param>
-        /// <param name="upper"></param>
-        /// <param name="target"></param>
-        /// <returns></returns>
         public static int BinarySearchIter(int[] array, int lower, int upper, int target)
         {
             while (lower != upper) {
@@ -153,25 +145,98 @@ namespace InterviewPrep.Arrays
         }
 
 
-        public static void compute_accum_mat(int[,] original_mat)
+        public static int[,] compute_accum_mat(int[,] original_mat)
         {
+            int[,] finalMatrix = new int[original_mat.GetLength(0), original_mat.GetLength(1)];
+            finalMatrix[0, 0] = original_mat[0, 0];
             for (int i = 0; i < original_mat.GetLength(0); i++)
             {
-                for (int j =0; j<original_mat.GetLength(0); j++)
+                for (int j = 0; j < original_mat.GetLength(1); j++)
                 {
-                    if (i>0 && j > 0)
-                    { 
-                        original_mat[i, j] = original_mat[i-1,j]+original_mat[i,j-1]-original_mat[i-1,j-1]+original_mat[i,j];
-                    }
-                    else if (i > 0 && j<1) {
-                        original_mat[i, j] = original_mat[i - 1, j]  + original_mat[i, j];
-                    }
-                    else if (j > 0 && i<1)
+                    if (i > 0 && j > 0)
                     {
-                        original_mat[i, j] =   original_mat[i, j - 1] + original_mat[i, j];
+                        finalMatrix[i, j] = finalMatrix[i-1,j]+ finalMatrix[i,j-1]- finalMatrix[i-1,j-1]+original_mat[i,j];
+                    }
+                    else if (i > 0 && j == 0)
+                    {
+                        finalMatrix[i, j] = finalMatrix[i - 1, j]  + original_mat[i, j];
+                    }
+                    else if (j > 0 && i == 0)
+                    {
+                        finalMatrix[i, j] = finalMatrix[i, j - 1] + original_mat[i, j];
                     }
                 }
             }
+            return finalMatrix;
+        }
+
+
+        public static int SquareSumBewteenTwoPoints(int[,] original_mat, int x1 , int y1, int x2, int y2 )
+        {
+            int[,] accumMat = compute_accum_mat(original_mat);
+            int xBig = Math.Max(x1, x2);
+            int xSmall = Math.Min(x1, x2);
+            int yBig = Math.Max(y1, y2);
+            int ySmall = Math.Min(y1, y2);
+            return (accumMat[xBig, yBig] - accumMat[xSmall, yBig] - accumMat[xBig, ySmall] + accumMat[xSmall, ySmall]); 
+        }
+
+
+        public static int ReturnBiggestSquareSize(int[,] original_mat)
+        {
+            int biggestSize = 1;
+            int tempSum;
+            int[,] accumMat= compute_accum_mat(original_mat);
+            for ( int i = 0; i < original_mat.GetLength(0); i++)
+            {
+                for (int j = 0; j < original_mat.GetLength(1); j++)
+                 {
+                    for (int k=1; (((i+ k) < original_mat.GetLength(0)) &&((j+ k)< original_mat.GetLength(1)) ); k++ )
+                    {
+                        tempSum = SquareSumBewteenTwoPoints(original_mat,i, j, i + k, j + k);
+                        if (tempSum == k*k)
+                        {
+                            if (k > biggestSize) 
+                            { biggestSize = k; }
+                        }
+                    }
+                }
+            }
+            return biggestSize+1;
+        }
+
+
+        public static int LargestSquareMatrixOfOne(int[,] original_mat)
+        {
+            int[,] AccumulatedMatrix = new int[original_mat.GetLength(0), original_mat.GetLength(1)];
+            AccumulatedMatrix[0, 0] = original_mat[0, 0];
+            int biggestSize = 1;
+            for (int i = 0; i < original_mat.GetLength(0); i++)
+            {
+                for (int j = 0; j < original_mat.GetLength(1); j++)
+                {
+                    if (i > 0 && j > 0)
+                    {
+                        AccumulatedMatrix[i, j] =Math.Min(AccumulatedMatrix[i - 1, j - 1], (Math.Min( AccumulatedMatrix[i - 1, j ], AccumulatedMatrix[i, j - 1])) )+ 1;
+                        if  (AccumulatedMatrix[i, j] > biggestSize)
+                        {
+                            biggestSize = AccumulatedMatrix[i, j];
+                        }
+
+                    }
+                    else if (i > 0 && j == 0)
+                    {
+                        if (original_mat[i, j] == 1) { AccumulatedMatrix[i, j] = 1; }
+                        else { AccumulatedMatrix[i, j] = 0; }
+                    }
+                    else if (j > 0 && i == 0)
+                    {
+                        if (original_mat[i, j] == 1) { AccumulatedMatrix[i, j] = 1; }
+                        else { AccumulatedMatrix[i, j] = 0; }
+                    }
+                }
+            }
+            return biggestSize;
         }
 
 
@@ -185,8 +250,7 @@ namespace InterviewPrep.Arrays
                 {
                     if (i > 0 && j > 0)
                     {
-                        mindi_mat[i, j] = Math.Min(mindi_mat[i - 1, j], mindi_mat[i, j - 1]) + original_mat[i, j];
-                                                   
+                        mindi_mat[i, j] = Math.Min(mindi_mat[i - 1, j], mindi_mat[i, j - 1]) + original_mat[i, j];         
                     }
                     else if (i > 0 && j < 1)
                     {

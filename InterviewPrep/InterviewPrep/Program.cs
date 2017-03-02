@@ -52,6 +52,17 @@ namespace InterviewPrep
             //Console.Out.WriteLine(orr[1, 1]);
 
 
+            int[,] testMatrix = new int[,] {   { 0,1,1,1,1,1 },
+                                               { 0,1,1,1,1,1 }, 
+                                               { 0,1,1,1,1,1 },
+                                               { 0,1,1,1,1,1 },
+                                               { 0,1,1,1,1,1 },
+                                               { 1,1,1,0,0,1 }
+                                           };
+
+            int result = DoubleArray.ReturnBiggestSquareSize(testMatrix);
+            int result2 = DoubleArray.LargestSquareMatrixOfOne(testMatrix);
+
             //char vv = Strings.first_non_rep_char("total");
             //Console.Out.WriteLine(vv);
 
@@ -60,11 +71,22 @@ namespace InterviewPrep
             Node n4 = new Node(null, null, 4);
             Node n3 = new Node(n1, n4, 3);
             Node n7 = new Node(null, null, 7);
-            //Node n14 = new Node(null, null, 14);
+            Node n14 = new Node(null, null, 14);
             Node n13 = new Node(null, null, 13);
             Node n12 = new Node(null, n13, 12);
             Node n10 = new Node(n7, n12, 10);
             Node n5 = new Node(n3, n10, 5); // root
+
+
+            Node commonAncestor = Node.CommonAncestorForBT(n7, n13, n5);
+            Console.Out.WriteLine("the common ancestor's value is "+commonAncestor.Value);
+
+
+            Node maParent = Node.FindParent(n5, n13);
+            Console.Out.WriteLine("My name is " + (n13.Value) + " and my mama name is " + (maParent.Value));
+
+            Node theNext = Node.WhoIsNextInOrder(n5, n1);
+            Console.Out.WriteLine("My name is " + (n1.Value) + " and my next one (in order traversal) is " + (theNext.Value));
 
 
             Node newNode = Node.CopyTheTree(n5);

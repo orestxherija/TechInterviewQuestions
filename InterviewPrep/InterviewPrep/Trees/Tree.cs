@@ -149,6 +149,88 @@ namespace InterviewPrep.Tree
             
 
         }
+        public static Node CommonAncestorForBT(Node n1, Node n2, Node root)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+            if (root.Value < n1.Value && root.Value < n2.Value
+                )
+            {
+                return CommonAncestorForBT(n1, n2, root.Right);
+            }
+            else if (root.Value < n1.Value && root.Value > n2.Value)
+            {
+                return CommonAncestorForBT(n1, n2, root.Left);
+            }
+            else
+            {
+                return root;
+            }
+        }
+
+
+        public static Node FindParent(Node root, Node node)
+        {
+            if (root == null || node == null)
+            {
+                return null;
+            }
+            else if ( (root.Right != null && root.Right.Value == node.Value) || (root.Left != null && root.Left.Value == node.Value))
+            {
+                return root;
+            }
+            else
+            {
+                Node found = FindParent(root.Right, node);
+
+                if (found == null)
+                {
+                    found = FindParent(root.Left, node);
+                }
+
+                return found;
+            }
+        }
+
+        public static Node GetLeftMost (Node node)
+        {
+            if (node.Left == null)
+            {
+                return node;
+            }
+            return GetLeftMost(node.Left);
+        }
+        
+        public static Node WhoIsNextInOrder(Node root, Node node)
+        {
+            if (node.Right != null)
+            {
+                return GetLeftMost(node.Right);
+            }
+            else ////////////// node.Right == null
+            {
+                Node p = new Node(null,null,-1);
+                Node Next = new Node(null, null, -1);
+                bool found = false;
+
+                
+                    p = FindParent(root, node);
+                    while (found == false)
+                    {
+                        if (p.Left == node) { Next = p; return Next; }
+                        node = p;
+                        p = FindParent(root, node);
+                    }
+                
+                return Next;
+            }
+        }
+
+
+
+
 
     }
 }
