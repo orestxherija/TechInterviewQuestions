@@ -217,11 +217,20 @@ namespace InterviewPrep.Arrays
                 {
                     if (i > 0 && j > 0)
                     {
-                        AccumulatedMatrix[i, j] =Math.Min(AccumulatedMatrix[i - 1, j - 1], (Math.Min( AccumulatedMatrix[i - 1, j ], AccumulatedMatrix[i, j - 1])) )+ 1;
-                        if  (AccumulatedMatrix[i, j] > biggestSize)
+                        if (original_mat[i, j] == 1)
                         {
-                            biggestSize = AccumulatedMatrix[i, j];
+                            AccumulatedMatrix[i, j] = Math.Min(AccumulatedMatrix[i - 1, j - 1], (Math.Min(AccumulatedMatrix[i - 1, j], AccumulatedMatrix[i, j - 1]))) + 1;
+                            if (AccumulatedMatrix[i, j] > biggestSize)
+                            {
+                                biggestSize = AccumulatedMatrix[i, j];
+                            }
                         }
+                        else {
+                            AccumulatedMatrix[i, j] = Math.Max(AccumulatedMatrix[i - 1, j - 1], (Math.Max(AccumulatedMatrix[i - 1, j], AccumulatedMatrix[i, j - 1]))) ;
+                            if (AccumulatedMatrix[i, j] > biggestSize)
+                            {
+                                biggestSize = AccumulatedMatrix[i, j];
+                            } }
 
                     }
                     else if (i > 0 && j == 0)

@@ -39,38 +39,25 @@ namespace InterviewPrep.StringsArrays
         }
 
 
-        public static string removeChars(string str, string remove)
+        public static string RemoveChars(string str, string remove)
         {
-            char[] s = str.ToCharArray(); // Mountain View is my town. I harrased white dude.
-            char[] r = remove.ToCharArray(); //aeiou
-            HashSet<char> hashRemove = new HashSet<char>(r);
+            char[] stringArray = str.ToCharArray(); // Mountain View is my town. I harrased white dude.
+            char[] remArray = remove.ToCharArray(); //aeiou
             bool[] flags = new bool[128];
-            int len = s.Length; //35
-            int src, dst;
-            for (src = 0; src < r.Length; ++src)
+            int i, src, dst;
+            for (i = 0; i < remArray.Length; i++)
             {
-                flags[r[src]] = true;
+                flags[remArray[i]] = true;
             }
-
             src = 0;
             dst = 0;
-
-            while(src < len)
-            {
-                if (!flags[(int)s[src]])
+            for (src=0;src< stringArray.Length ;src ++)
+                if (!flags[(int)stringArray[src]])
                 {
-                    s[dst] = s[src];
+                    stringArray[dst] = stringArray[src];
                     dst = dst + 1;
                 }
-                else
-                {
-                    System.Console.WriteLine((int)s[src] + "-" + s[src]);
-                }
-                ++src;
-            }
-
-            Console.Out.WriteLine(new string(s, 0, dst));
-            return new string(s, 0, dst);
+            return new string (stringArray, 0,dst);
         }
 
 

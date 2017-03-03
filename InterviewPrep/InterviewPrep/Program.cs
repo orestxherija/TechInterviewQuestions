@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InterviewPrep.Tree;
 using InterviewPrep.Arrays;
 
+
 namespace InterviewPrep
 {
     class Program
@@ -34,9 +35,9 @@ namespace InterviewPrep
             */
 
 
-            //string s1 = "shibalshibal shishibal";
-            //string rm = "aeiou";
-            //Strings.removeChars(s1, rm);
+            string s1 = "Aerin Fishkin";
+            string rm = "aeiou";
+            string removeVowel = StringsArrays.Strings.RemoveChars(s1, rm);
 
             //string s1 = "banal";
             //Console.Out.WriteLine(Strings.RemoveDupCharsWBuffer(s1));
@@ -52,11 +53,11 @@ namespace InterviewPrep
             //Console.Out.WriteLine(orr[1, 1]);
 
 
-            int[,] testMatrix = new int[,] {   { 0,1,1,1,1,1 },
-                                               { 0,1,1,1,1,1 }, 
-                                               { 0,1,1,1,1,1 },
-                                               { 0,1,1,1,1,1 },
-                                               { 0,1,1,1,1,1 },
+            int[,] testMatrix = new int[,] {   { 0,1,1,1,1,0 },
+                                               { 0,1,1,1,1,0 }, 
+                                               { 0,1,1,1,1,0 },
+                                               { 0,1,1,1,1,0 },
+                                               { 0,1,1,1,1,0 },
                                                { 1,1,1,0,0,1 }
                                            };
 
