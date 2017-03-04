@@ -226,19 +226,10 @@ namespace InterviewPrep.Arrays
                             }
                         }
                         else {
-                            AccumulatedMatrix[i, j] = Math.Max(AccumulatedMatrix[i - 1, j - 1], (Math.Max(AccumulatedMatrix[i - 1, j], AccumulatedMatrix[i, j - 1]))) ;
-                            if (AccumulatedMatrix[i, j] > biggestSize)
-                            {
-                                biggestSize = AccumulatedMatrix[i, j];
-                            } }
+                            AccumulatedMatrix[i, j] = 0; }
 
                     }
-                    else if (i > 0 && j == 0)
-                    {
-                        if (original_mat[i, j] == 1) { AccumulatedMatrix[i, j] = 1; }
-                        else { AccumulatedMatrix[i, j] = 0; }
-                    }
-                    else if (j > 0 && i == 0)
+                    else if ( (i > 0 && j == 0) || (j > 0 && i == 0))
                     {
                         if (original_mat[i, j] == 1) { AccumulatedMatrix[i, j] = 1; }
                         else { AccumulatedMatrix[i, j] = 0; }

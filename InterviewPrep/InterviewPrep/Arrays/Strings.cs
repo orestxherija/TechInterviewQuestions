@@ -3,11 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace InterviewPrep.StringsArrays
 {
     class Strings
     {
+
+
+        public static int StringToSignedInteger(string str)
+        {
+            int i;
+            int digit;
+            double integer ;
+            bool isNeg = false;
+            i = 0;
+            integer = 0.0;
+            digit = str.Length-1;
+                        
+            if (str[0] == '-')
+            {
+                isNeg = true;
+                i = 1;
+                digit = digit - 1;
+            }
+            while (i<str.Length)
+            { 
+                integer = integer + (double)(str[i] - '0') * Math.Pow(10.0, (double)digit);
+                i += 1;
+                digit -= 1;
+            }
+            if (isNeg) { integer = integer * (-1.0); }
+            return (int)integer;
+        }
+
+        
+        public static string IntegerToString(int integer)
+        {
+            int i;
+            int absInteger;
+            string reversedStrr;
+            absInteger= Math.Abs(integer);
+            i = 0;
+            Stack<char> charStack = new Stack<char>();
+            
+            while (absInteger > 1)
+            {
+                charStack.Push( (char)((absInteger % 10) + '0') );
+                absInteger = absInteger / 10;
+                i += 1 ;
+            }
+            if (integer < 0)
+            {
+                charStack.Push( '-' );
+            }
+            StringBuilder str = new StringBuilder();
+            while (charStack.Count > 0)
+            {
+                str.Append(  charStack.Pop());
+            }
+            return str.ToString();
+        }
+
+    
+
         public static char first_non_rep_char(string str)
         {
             char[] s = str.ToCharArray();

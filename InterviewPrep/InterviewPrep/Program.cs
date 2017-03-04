@@ -39,6 +39,10 @@ namespace InterviewPrep
             string rm = "aeiou";
             string removeVowel = StringsArrays.Strings.RemoveChars(s1, rm);
 
+            int stringFromInteger = StringsArrays.Strings.StringToSignedInteger("408");
+            string intergerFromString= StringsArrays.Strings.IntegerToString(-707);
+            //int a = 'c' - 'a'; // this is 2.
+
             //string s1 = "banal";
             //Console.Out.WriteLine(Strings.RemoveDupCharsWBuffer(s1));
 
