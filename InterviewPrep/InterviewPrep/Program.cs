@@ -41,6 +41,10 @@ namespace InterviewPrep
 
             int stringFromInteger = StringsArrays.Strings.StringToSignedInteger("408");
             string intergerFromString= StringsArrays.Strings.IntegerToString(-707);
+
+            bool unique = StringsArrays.Strings.StringContainsAllUnique("chrism");
+            string RemoveDuplicatedCharacters = StringsArrays.Strings.RemoveDuplicatedCharacters("aqbcd");
+
             //int a = 'c' - 'a'; // this is 2.
 
             //string s1 = "banal";

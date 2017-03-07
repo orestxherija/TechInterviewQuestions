@@ -9,6 +9,49 @@ namespace InterviewPrep.StringsArrays
 {
     class Strings
     {
+        public static Boolean StringContainsAllUnique(string str)
+        {
+            bool[] used = new bool[128];
+            int len = str.Length;
+            int i = 0;
+            for (i=0;i< len; i++)
+            {
+                if (used[str[i]]) { return false; }
+                used[str[i]] = true;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Remove Duplicated Characters without using any buffer.
+        /// </summary>
+        /// <param name="stringInput"></param>
+        /// <returns></returns>
+        /// TEST CASE: "aaaaa", "aaabb", "abdce", "a"
+        public static string RemoveDuplicatedCharacters(string stringInput)
+        {
+            if (stringInput == null) return null;
+            if (stringInput.Length <= 1) return stringInput;
+            char[] c = stringInput.ToCharArray();
+            int tail = 0;
+            int i, j;
+            for (i = 0; i < c.Length; i++)
+            {
+                for (j = 0; j < i+1; j++)
+                {
+                    if ((c[i] == c[j]) && (i!= j))
+                    {
+                        break;
+                    }
+                    if (j==i)
+                    {
+                        c[tail] = c[i];
+                        tail += 1;
+                    }
+                }
+            }       
+            return new string (c, 0, tail);
+        }
 
 
         public static int StringToSignedInteger(string str)
