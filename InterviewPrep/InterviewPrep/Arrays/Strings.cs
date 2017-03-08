@@ -53,6 +53,45 @@ namespace InterviewPrep.StringsArrays
             return new string (c, 0, tail);
         }
 
+        public static bool AreTheseAnagrams(string s1, string s2)
+        {
+            int i = 0;
+            char[] c1 = s1.ToCharArray();
+            char[] c2 = s2.ToCharArray();
+            Array.Sort(c1);
+            Array.Sort(c2);
+            return c1 == c2 ;
+        }
+
+
+        public static int[,] MakeRowsColumnsZero(int[,] x)
+        {
+            int i, j, k, l;
+            int[,] xCopy = x.Clone() as int[,];
+            for (i=0;i<x.GetLength(0); i++)
+            {
+                for (j=0; j<x.GetLength(1); j++)
+                {
+                    if (x[i,j] == 0)
+                    {
+                        for (k = 0; k < x.GetLength(0); k++) { xCopy[k, j] = 0; }
+                        for (l = 0; l < x.GetLength(1); l++) { xCopy[i, l] = 0; }
+                    }
+                }
+            }
+            return xCopy;
+        }
+
+        public static bool IsRotation (string s1, string s2)
+        {
+            bool yesOrNo = false;
+
+
+
+            return yesOrNo;
+        }
+
+
 
         public static int StringToSignedInteger(string str)
         {
@@ -221,6 +260,35 @@ namespace InterviewPrep.StringsArrays
                                
 
             return new string(s, 0, tail);
+        }
+
+        public static void DoPermutation(char[] c, bool[] used, string temp, int stringLength)
+        {
+            if (temp.Length == stringLength)
+            {
+                Console.WriteLine(temp);
+                return;
+            }
+            else
+            {
+                int i;
+                for (i = 0; i < stringLength; i++) {
+                    if (used[i] == false) {
+                        temp = temp + c[i];
+                        used[i] = true;
+                        DoPermutation(c, used, temp, stringLength);
+                        used[i] = false;
+                        temp = temp.TrimEnd(c[i]);
+                    }
+                }
+            }
+        }
+
+        public static void Permutation(string s)
+        {
+            char[] c = s.ToCharArray();
+            bool[] used = new bool[s.Length];
+            DoPermutation(c, used, "", s.Length);
         }
 
 

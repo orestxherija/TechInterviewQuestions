@@ -45,6 +45,15 @@ namespace InterviewPrep
             bool unique = StringsArrays.Strings.StringContainsAllUnique("chrism");
             string RemoveDuplicatedCharacters = StringsArrays.Strings.RemoveDuplicatedCharacters("aqbcd");
 
+            bool anagram = StringsArrays.Strings.AreTheseAnagrams("iceman","cinema");
+
+            StringsArrays.Strings.Permutation("abcd");
+
+
+
+            int[,] x1 = new int[,] { { 1, 0, 3 }, { 4, 5, 6 } };
+            int[,] x = StringsArrays.Strings.MakeRowsColumnsZero(x1); 
+
             //int a = 'c' - 'a'; // this is 2.
 
             //string s1 = "banal";
