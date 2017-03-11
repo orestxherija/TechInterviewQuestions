@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using InterviewPrep.Tree;
 using InterviewPrep.Arrays;
+using InterviewPrep.Recursion;
 
 
 namespace InterviewPrep
@@ -56,7 +57,7 @@ namespace InterviewPrep
             HashSet<string> result2 = DoubleArray.ZeroOneCombination(set,subset,allSubsets);
 
             int result5 = DoubleArray.Ways2PayNCents(15);
-
+            int result6 = Recursion.Recursion.WaysToExit(3,3 );
 
             int[,] x1 = new int[,] { { 1, 0, 3 }, { 4, 5, 6 } };
             int[,] x = StringsArrays.Strings.MakeRowsColumnsZero(x1); 
