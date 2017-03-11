@@ -202,6 +202,7 @@ namespace InterviewPrep.Arrays
                     }
                 }
             }
+
             return biggestSize+1;
         }
 
@@ -291,7 +292,60 @@ namespace InterviewPrep.Arrays
                 i++; j = 0;
             }
             return null;
-        }        
+        }
+
+
+
+        public static HashSet<string> ZeroOneCombination(string set, StringBuilder subset, HashSet<string> allSubsets)
+        {
+            int i;
+            if (subset.Length == set.Length)
+            {
+                string temp = subset.ToString();
+                allSubsets.Add(temp);
+                return allSubsets;
+            }
+            for (i = 0; i < 2; i++)
+            {
+                subset.Append(i.ToString());
+                HashSet<string> temp2 = ZeroOneCombination(set, subset, allSubsets);
+                allSubsets.UnionWith(temp2);
+                subset.Length -= 1; 
+            }
+            return allSubsets; // Challenge: how to return one final allSubsets?
+        }
+
+
+        public static int Ways2PayNCents(int n)
+        {
+            int numberOfWays=0;
+            int cent, nickel, dime, quarter;
+            for (quarter = 0; quarter <= n/25; quarter++)
+            {
+                for (dime = 0; dime <= n/10; dime++)
+                {
+                    for (nickel = 0; nickel <= n/5; nickel++)
+                    {
+                        cent = n - (quarter * 25 + dime * 10 + nickel * 5);
+                        if (cent >= 0)
+                        {
+                            numberOfWays += 1;
+                            Console.WriteLine("{0},{1},{2},{3}", quarter, dime, nickel, cent);
+                        }                   
+                    }
+                }
+            }
+            return numberOfWays;            
+        }
+
+
+
+
+
+
+
+
+
     }
 
     public class GenericArray<T> where T : IComparable

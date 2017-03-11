@@ -50,6 +50,13 @@ namespace InterviewPrep
             StringsArrays.Strings.Permutation("abcd");
 
 
+            string set = "abc";
+            StringBuilder subset = new StringBuilder();
+            HashSet<string> allSubsets = new HashSet<string>();
+            HashSet<string> result2 = DoubleArray.ZeroOneCombination(set,subset,allSubsets);
+
+            int result5 = DoubleArray.Ways2PayNCents(15);
+
 
             int[,] x1 = new int[,] { { 1, 0, 3 }, { 4, 5, 6 } };
             int[,] x = StringsArrays.Strings.MakeRowsColumnsZero(x1); 
@@ -79,7 +86,7 @@ namespace InterviewPrep
                                            };
 
             int result = DoubleArray.ReturnBiggestSquareSize(testMatrix);
-            int result2 = DoubleArray.LargestSquareMatrixOfOne(testMatrix);
+            int result3 = DoubleArray.LargestSquareMatrixOfOne(testMatrix);
 
             //char vv = Strings.first_non_rep_char("total");
             //Console.Out.WriteLine(vv);
