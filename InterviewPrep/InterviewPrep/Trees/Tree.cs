@@ -79,7 +79,7 @@ namespace InterviewPrep.Tree
             {
                 return null;
             }
-            Node NewNode = new Node(root.Left,root.Right,root.Value);
+            Node NewNode = new Node(root.Left, root.Right, root.Value);
             NewNode.Left = CopyTheTree(root.Left);
             NewNode.Right = CopyTheTree(root.Right);
             return NewNode;
@@ -128,25 +128,25 @@ namespace InterviewPrep.Tree
             {
                 return true;
             }
-    
+
         }
 
 
         public static Node MinHeightBT(int[] arr, int lower, int higher)
         {
-            if (higher<= lower)
+            if (higher <= lower)
             {
-                return new Node(null,null, arr[lower]);
+                return new Node(null, null, arr[lower]);
             }
             else
             {
                 int center = ((lower + higher) / 2);
                 Node c_root = new Node(null, null, arr[center]);
-                c_root.Left = MinHeightBT(arr, lower, center -1);
-                c_root.Right = MinHeightBT(arr, center+ 1, higher);
+                c_root.Left = MinHeightBT(arr, lower, center - 1);
+                c_root.Right = MinHeightBT(arr, center + 1, higher);
                 return c_root;
             }
-            
+
 
         }
         public static Node CommonAncestorForBT(Node n1, Node n2, Node root)
@@ -177,7 +177,7 @@ namespace InterviewPrep.Tree
             {
                 return null;
             }
-            else if ( (root.Right != null && root.Right.Value == node.Value) || (root.Left != null && root.Left.Value == node.Value))
+            else if ((root.Right != null && root.Right.Value == node.Value) || (root.Left != null && root.Left.Value == node.Value))
             {
                 return root;
             }
@@ -194,7 +194,7 @@ namespace InterviewPrep.Tree
             }
         }
 
-        public static Node GetLeftMost (Node node)
+        public static Node GetLeftMost(Node node)
         {
             if (node.Left == null)
             {
@@ -202,35 +202,72 @@ namespace InterviewPrep.Tree
             }
             return GetLeftMost(node.Left);
         }
-        
+
         public static Node WhoIsNextInOrder(Node root, Node node)
         {
             if (node.Right != null)
             {
                 return GetLeftMost(node.Right);
             }
-            else ////////////// node.Right == null
+            else // node.Right == null
             {
-                Node p = new Node(null,null,-1);
+                Node p = new Node(null, null, -1);
                 Node Next = new Node(null, null, -1);
                 bool found = false;
-
-                
+                p = FindParent(root, node);
+                while (found == false)
+                {
+                    if (p.Left == node) { Next = p; return Next; }
+                    node = p;
                     p = FindParent(root, node);
-                    while (found == false)
-                    {
-                        if (p.Left == node) { Next = p; return Next; }
-                        node = p;
-                        p = FindParent(root, node);
-                    }
-                
+                }
                 return Next;
             }
         }
 
+        private static int globalDepth = 0;
+        public static void PrintLeftSide(Node root, int localDepth)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            if (localDepth > globalDepth)
+            {
+                Console.WriteLine(root.Value);
+                globalDepth++;
+            }
+            PrintLeftSide(root.Left, localDepth + 1);
+            PrintLeftSide(root.Right, localDepth + 1);
+        }
+
+        private static int firstKthSum = 0;
+        private static int firstKthSumReturned = 0;
+        private static int count = 0;
+
+        public static void FirstKthSum(Node root, int k)
+        {
+            if (root == null)
+            {
+                return;
+            }
+            FirstKthSum(root.Left, k);
+            count += 1;
+            firstKthSum += root.Value;
+            if (k == count)
+            {
+                firstKthSumReturned = firstKthSum;
+                return;
+            }
+            FirstKthSum(root.Right, k);
+        }
 
 
-
+        public static int FirstKthSumHelper(Node root, int k)
+        {
+            FirstKthSum(root, k);
+            return firstKthSumReturned;
+        }
 
     }
-}
+} 

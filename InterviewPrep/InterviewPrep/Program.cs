@@ -14,6 +14,11 @@ namespace InterviewPrep
     {
         static void Main(string[] args)
         {
+            int xxx;
+            for (xxx =2; xxx>1; --xxx)
+            {
+                Console.WriteLine("yes");
+            }
 
             //Double[] a = Recursion.GenericArray<Double>.MergeSort(new Double[]{ 5,4,3,2},0,3);
 
@@ -59,6 +64,14 @@ namespace InterviewPrep
             int result5 = DoubleArray.Ways2PayNCents(15);
             int result6 = Recursion.Recursion.WaysToExit(3,3 );
 
+            List<string> listOfPaths = new List<string>();
+            StringBuilder tempString = new StringBuilder();
+            Recursion.Recursion.WaysToExitWObstacle(2, 2, tempString, listOfPaths);
+
+            StringBuilder tempString2 = new StringBuilder();
+            Recursion.Recursion.CombiParentheses(3, 0, tempString2);
+
+
             int[,] x1 = new int[,] { { 1, 0, 3 }, { 4, 5, 6 } };
             int[,] x = StringsArrays.Strings.MakeRowsColumnsZero(x1); 
 
@@ -89,6 +102,13 @@ namespace InterviewPrep
             int result = DoubleArray.ReturnBiggestSquareSize(testMatrix);
             int result3 = DoubleArray.LargestSquareMatrixOfOne(testMatrix);
 
+            int[,] traverseMatrix = new int[,] { { 0,1,2,3 },
+                                                 { 4,5,6,7 },
+                                                 { 8,9,10,11 }
+                                                };
+            Stack<int> stackResult1 = DoubleArray.SpiralTraverse(traverseMatrix);
+
+
             //char vv = Strings.first_non_rep_char("total");
             //Console.Out.WriteLine(vv);
 
@@ -102,6 +122,11 @@ namespace InterviewPrep
             Node n12 = new Node(null, n13, 12);
             Node n10 = new Node(n7, n12, 10);
             Node n5 = new Node(n3, n10, 5); // root
+
+            int result0 = Node.FirstKthSumHelper(n5, 3);
+
+
+            Node.PrintLeftSide(n5,1);
 
 
             Node commonAncestor = Node.CommonAncestorForBT(n7, n13, n5);

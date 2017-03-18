@@ -338,7 +338,44 @@ namespace InterviewPrep.Arrays
             return numberOfWays;            
         }
 
-
+        public static Stack<int> SpiralTraverse(int[,] arr)
+        {
+            Stack<int> trav = new Stack<int>();
+            int m = arr.GetLength(0)-1;
+            int n = arr.GetLength(1)-1;
+            int k = 0; int l = 0; // starting point 
+            int i; //index
+            while( k <= m && l <= n)
+            {
+                for (i= l; i <= n; i++)
+                {
+                    trav.Push((int)arr[k, i]);
+                }
+                k++;
+                for (i = k; i <= m; i++)
+                {
+                    trav.Push((int)arr[i, n]);
+                }
+                n--;
+                if (k < m)
+                {
+                    for (i= n;i>= l; i--)
+                    {
+                        trav.Push((int)arr[m,i]);
+                    }
+                    m--;
+                }
+                if (l < n)
+                {
+                    for (i= m;i>= k; i--)
+                    {
+                        trav.Push((int)arr[i, l]);
+                    }
+                    l++;
+                }
+            }
+            return trav;
+        }
 
 
 
