@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InterviewPrep.Tree;
+
 using InterviewPrep.Arrays;
 using InterviewPrep.Recursion;
-
+using InterviewPrep.Dequeue;
+using InterviewPrep.Dequeue.Generic;
 
 namespace InterviewPrep
 {
@@ -102,11 +104,15 @@ namespace InterviewPrep
             int result = DoubleArray.ReturnBiggestSquareSize(testMatrix);
             int result3 = DoubleArray.LargestSquareMatrixOfOne(testMatrix);
 
-            int[,] traverseMatrix = new int[,] { { 0,1,2,3 },
-                                                 { 4,5,6,7 },
-                                                 { 8,9,10,11 }
+            int[,] traverseMatrix = new int[,] { { 11, 12, 13 },
+                                                 { 21, 22, 23 },
+                                                 { 31, 32, 33 }
                                                 };
             Stack<int> stackResult1 = DoubleArray.SpiralTraverse(traverseMatrix);
+
+            int[] randomArray = { 4, 9, 8, 6, 3, 1, 11, 14, 7, 9 };
+            DoubleArray.printKMax(randomArray, randomArray.Length, 3);
+
 
 
             //char vv = Strings.first_non_rep_char("total");

@@ -9,7 +9,7 @@ namespace InterviewPrep.Tree
 {
     public class Node
     {
-        // Properties..
+        // Properties
         public Node Left;
         public Node Right;
         public int Value;
@@ -79,10 +79,10 @@ namespace InterviewPrep.Tree
             {
                 return null;
             }
-            Node NewNode = new Node(root.Left, root.Right, root.Value);
-            NewNode.Left = CopyTheTree(root.Left);
-            NewNode.Right = CopyTheTree(root.Right);
-            return NewNode;
+            Node newNode = new Node(null, null, root.Value);
+            newNode.Left= CopyTheTree(root.Left);
+            newNode.Right= CopyTheTree(root.Right);
+            return newNode;
         }
 
         public static int GetMaxDepth(Node root, int maxDepth)
@@ -267,6 +267,46 @@ namespace InterviewPrep.Tree
         {
             FirstKthSum(root, k);
             return firstKthSumReturned;
+        }
+
+
+        public static void Root2LeavesHelper(Node root)
+        {
+            List<int[]> q = new List<int[]>;
+            int[] arr = new int[2];
+            arr[0] = root.Value; arr[1] = 0;
+            q.Add(arr);
+            Root2Leaves(root, q);
+        }
+
+        public static void Root2Leaves (Node root, List<int[]> q)
+        {
+            if (root == null) { return; }
+            if (root.Left == null && root.Right == null)
+            {
+                RelativelyPrintHelper(q);
+            }
+            int[] arrL = new int[2];
+            int[] arrR = new int[2];
+            arrL[0] = root.Left.Value; arrL[1] = -1;
+            arrR[0] = root.Right.Value; arrR[1] = 1;
+
+            q.Add(arrL);
+            Root2Leaves(root.Left, q);
+            q.Remove(q.Last());
+            q.Add(arrR);
+            Root2Leaves(root.Right, q);
+            
+        }
+
+        public static void RelativelyPrintHelper(List<int[]> q)
+        {
+
+        }
+
+        public static int HowManyOnesAreHere(List<int[]> l)
+        {
+
         }
 
     }

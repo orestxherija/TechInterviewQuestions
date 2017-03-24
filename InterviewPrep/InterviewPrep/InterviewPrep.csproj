@@ -48,6 +48,11 @@
     <Compile Include="Lists\LinkedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queue\Dequeue.cs" />
+    <Compile Include="Queue\GenericDeque.cs" />
+    <Compile Include="Queue\GenericDeque.Enumerator.cs" />
+    <Compile Include="Queue\GenericDeque.Node.cs" />
+    <Compile Include="Queue\GenericDeque.Synchronized.cs" />
     <Compile Include="Recursion\Recursion.cs" />
     <Compile Include="Trees\Tree.cs" />
   </ItemGroup>

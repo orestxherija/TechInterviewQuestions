@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InterviewPrep.Dequeue;
+using InterviewPrep.Dequeue.Generic;
 
 namespace InterviewPrep.Arrays
 {
@@ -341,9 +343,9 @@ namespace InterviewPrep.Arrays
         public static Stack<int> SpiralTraverse(int[,] arr)
         {
             Stack<int> trav = new Stack<int>();
-            int m = arr.GetLength(0)-1;
+            int m = arr.GetLength(0)-1; //end point (m,n)
             int n = arr.GetLength(1)-1;
-            int k = 0; int l = 0; // starting point 
+            int k = 0; int l = 0; // starting point (k,l)
             int i; //index
             while( k <= m && l <= n)
             {
@@ -377,7 +379,34 @@ namespace InterviewPrep.Arrays
             return trav;
         }
 
-
+        public static void printKMax(int[] arr, int n, int k)
+        {
+            Deque<int> qi = new Deque<int>();
+            int i;
+            for (i=0;i< k; i++)
+            {
+                while ((qi.Count > 0) && (arr[i] >= arr[qi.PeekBack()]))
+                {
+                    qi.PopBack();
+                }
+                qi.PushBack(i);
+            }
+           
+            for(i=k ;i< n; ++i)
+            {
+                Console.WriteLine(arr[qi.PeekFront()]);
+                while (qi.Count >0 && qi.PeekFront() <= i - k)
+                {
+                    qi.PopFront();
+                }
+                while(qi.Count>0 && arr[i]>=arr[qi.PeekBack()])
+                {
+                    qi.PopBack();
+                }
+                qi.PushBack(i);
+            }
+            Console.WriteLine(arr[qi.PeekFront()]);
+        }
 
 
 
