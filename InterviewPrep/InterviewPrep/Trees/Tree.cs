@@ -270,11 +270,29 @@ namespace InterviewPrep.Tree
         }
 
 
+
+        public static void PrintRoot2Leaves(Node root, List<int> path)
+        {
+            if (root == null) { return; }
+            path.Add(root.Value);
+            if (root.Left == null && root.Right == null)
+            {
+                Console.WriteLine(string.Join(",", path));
+                return;
+            }
+            else {
+                PrintRoot2Leaves(root.Left, new List<int>(path));
+                PrintRoot2Leaves(root.Right, new List<int>(path));
+            }
+        }
+
+
         public static void Root2LeavesHelper(Node root)
         {
-            List<int[]> q = new List<int[]>;
+            List<int[]> q = new List<int[]>();
             int[] arr = new int[2];
-            arr[0] = root.Value; arr[1] = 0;
+            arr[0] = root.Value;
+            arr[1] = 0;
             q.Add(arr);
             Root2Leaves(root, q);
         }
@@ -285,6 +303,7 @@ namespace InterviewPrep.Tree
             if (root.Left == null && root.Right == null)
             {
                 RelativelyPrintHelper(q);
+                return;
             }
             int[] arrL = new int[2];
             int[] arrR = new int[2];
@@ -295,8 +314,7 @@ namespace InterviewPrep.Tree
             Root2Leaves(root.Left, q);
             q.Remove(q.Last());
             q.Add(arrR);
-            Root2Leaves(root.Right, q);
-            
+            Root2Leaves(root.Right, q);    
         }
 
         public static void RelativelyPrintHelper(List<int[]> q)
@@ -306,7 +324,7 @@ namespace InterviewPrep.Tree
 
         public static int HowManyOnesAreHere(List<int[]> l)
         {
-
+            return 0;
         }
 
     }

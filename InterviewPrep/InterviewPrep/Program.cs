@@ -130,8 +130,9 @@ namespace InterviewPrep
             Node n5 = new Node(n3, n10, 5); // root
 
             int result0 = Node.FirstKthSumHelper(n5, 3);
-
-
+            Console.WriteLine("=================");
+            List<int> emptyList = new List<int>();
+            Node.PrintRoot2Leaves(n5,emptyList);
             Node.PrintLeftSide(n5,1);
 
 
