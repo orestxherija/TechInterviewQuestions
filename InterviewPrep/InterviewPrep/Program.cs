@@ -23,25 +23,24 @@ namespace InterviewPrep
             }
 
             //Double[] a = Recursion.GenericArray<Double>.MergeSort(new Double[]{ 5,4,3,2},0,3);
-
-            /*
-            LinkedList num1 = new LinkedList();
-            LinkedList num2 = new LinkedList();
-
-            num1.Add(1);
-            num1.Add(2);
-            num1.Add(3);
-            num2.Add(5);
-            num2.Add(6);
-            num2.Add(7);
-            num2.Add(8);
-
-            // num1.Reverse();
             
-            LinkedList result = num1.ElementSum(num2);
-            LinkedList result2 = num1.ElementSumElegant(num2);
-            */
+            LinkedList ll = new LinkedList();
+            LinkedList ll2 = new LinkedList();
 
+            ll.Add(1);
+            ll.Add(2);
+            ll.Add(3);
+
+            ll2.Add(5);
+            ll2.Add(6);
+            ll2.Add(7);
+            ll2.Add(8);
+
+            ll.Reverse();
+            
+            LinkedList ll_result = ll.ElementSum(ll2);
+            LinkedList ll_result2 = ll.ElementSumElegant(ll2);
+            
 
             string s1 = "Aerin Fishkin";
             string rm = "aeiou";

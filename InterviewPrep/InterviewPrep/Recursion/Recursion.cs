@@ -46,7 +46,6 @@ namespace InterviewPrep.Recursion
                     temp.Append(1);
                     WaysToExitWObstacle(x, y-1, temp, paths);
                     if (temp.Length > 0) { temp.Length -= 1; }
-
                 }
                 else if (y == 0 && x!=0)
                 {

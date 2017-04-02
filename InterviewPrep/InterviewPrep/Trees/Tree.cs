@@ -286,46 +286,47 @@ namespace InterviewPrep.Tree
             }
         }
 
-
-        public static void Root2LeavesHelper(Node root)
-        {
-            List<int[]> q = new List<int[]>();
-            int[] arr = new int[2];
-            arr[0] = root.Value;
-            arr[1] = 0;
-            q.Add(arr);
-            Root2Leaves(root, q);
-        }
-
-        public static void Root2Leaves (Node root, List<int[]> q)
+        /*
+        public static void PrintRoot2LeavesRelatively(Node root, List<int> path, List<int> rela)
         {
             if (root == null) { return; }
+            path.Add(root.Value);
             if (root.Left == null && root.Right == null)
             {
-                RelativelyPrintHelper(q);
+                Console.WriteLine(string.Join(",", path));
                 return;
             }
-            int[] arrL = new int[2];
-            int[] arrR = new int[2];
-            arrL[0] = root.Left.Value; arrL[1] = -1;
-            arrR[0] = root.Right.Value; arrR[1] = 1;
-
-            q.Add(arrL);
-            Root2Leaves(root.Left, q);
-            q.Remove(q.Last());
-            q.Add(arrR);
-            Root2Leaves(root.Right, q);    
+            else {
+                PrintRoot2Leaves(root.Left, new List<int>(path), );
+                PrintRoot2Leaves(root.Right, new List<int>(path), );
+            }
         }
+        */
 
-        public static void RelativelyPrintHelper(List<int[]> q)
+
+        public static void LevelOrderPrint(Node root, int level)
         {
-
+            if (root == null)
+            {
+                return;
+            }
+            else if (level > 0)
+            {
+                Console.WriteLine(root);
+                LevelOrderPrint(root.Left, level-1);
+                LevelOrderPrint(root.Right, level-1);
+            }
+            else
+            {
+                Console.WriteLine(root.Left);
+                Console.WriteLine(root.Right);
+            }
         }
+        
 
-        public static int HowManyOnesAreHere(List<int[]> l)
-        {
-            return 0;
-        }
+
+
+
 
     }
 } 

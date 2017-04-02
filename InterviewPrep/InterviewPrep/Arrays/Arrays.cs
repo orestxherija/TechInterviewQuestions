@@ -383,7 +383,7 @@ namespace InterviewPrep.Arrays
         {
             Deque<int> qi = new Deque<int>();
             int i;
-            for (i=0;i< k; i++)
+            for (i=0;i< k; i++) // first window of the array
             {
                 while ((qi.Count > 0) && (arr[i] >= arr[qi.PeekBack()]))
                 {
@@ -394,17 +394,18 @@ namespace InterviewPrep.Arrays
            
             for(i=k ;i< n; ++i)
             {
-                Console.WriteLine(arr[qi.PeekFront()]);
-                while (qi.Count >0 && qi.PeekFront() <= i - k)
+                Console.WriteLine(arr[qi.PeekFront()]); // the front item is the largest element in previous window.
+                while (qi.Count > 0 && qi.PeekFront() <= i - k) // this is where the comparison is happening!
                 {
-                    qi.PopFront();
+                    qi.PopFront(); //now it's out of its window k 
                 }
-                while(qi.Count>0 && arr[i]>=arr[qi.PeekBack()])
+                while(qi.Count>0 && arr[i]>=arr[qi.PeekBack()]) // repeat
                 {
                     qi.PopBack();
                 }
                 qi.PushBack(i);
             }
+
             Console.WriteLine(arr[qi.PeekFront()]);
         }
 

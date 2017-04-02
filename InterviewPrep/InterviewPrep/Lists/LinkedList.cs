@@ -72,14 +72,11 @@ namespace InterviewPrep
                 LinkedList linkedListSum = new LinkedList();
                 this.Reverse();
                 other.Reverse();
-
                 Node n1 = this.head;
                 Node n2 = other.head;
-
                 int passAround = 0 ;
                 int leftover = 0;
                 int tempSum = 0;
-
             while ((n1 != null) || (n2!= null))
                 {
                 int num1 = ( n1==null ? 0: (int)n1.NodeContent);
@@ -100,23 +97,13 @@ namespace InterviewPrep
 
 
 
-
-
-
-
-
-
-
-
         public LinkedList ElementSumElegant(LinkedList other)
         {
             LinkedList linkedListSum = new LinkedList();
             this.Reverse();
             other.Reverse();
-
             Node n1 = this.head, n2 = other.head;
             int toAdd = 0, carryOver = 0;
-
             while ((n1 != null) || (n2 != null))
             {
                 int num1 = (int) (n1 == null ? 0 : n1.NodeContent);
@@ -127,7 +114,6 @@ namespace InterviewPrep
                 n1 = (n1 == null ? null : n1.Next);
                 n2 = (n2 == null ? null : n2.Next);
             }
-
             this.Reverse();
             other.Reverse();
             linkedListSum.Reverse();
