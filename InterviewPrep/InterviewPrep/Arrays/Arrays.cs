@@ -231,9 +231,10 @@ namespace InterviewPrep.Arrays
                                 biggestSize = AccumulatedMatrix[i, j];
                             }
                         }
-                        else {
-                            AccumulatedMatrix[i, j] = 0; }
-
+                        else
+                        {
+                            AccumulatedMatrix[i, j] = 0;
+                        }
                     }
                     else if ( (i > 0 && j == 0) || (j > 0 && i == 0))
                     {
@@ -272,7 +273,6 @@ namespace InterviewPrep.Arrays
                     }
                 }
             }
-
             return mindi_mat;
         }   
 
