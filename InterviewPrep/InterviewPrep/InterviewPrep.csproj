@@ -54,6 +54,7 @@
     <Compile Include="Queue\GenericDeque.Node.cs" />
     <Compile Include="Queue\GenericDeque.Synchronized.cs" />
     <Compile Include="Recursion\Recursion.cs" />
+    <Compile Include="Stack\MinStack.cs" />
     <Compile Include="Trees\Tree.cs" />
   </ItemGroup>
   <ItemGroup>

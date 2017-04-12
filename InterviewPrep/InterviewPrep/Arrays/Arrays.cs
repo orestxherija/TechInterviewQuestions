@@ -122,26 +122,29 @@ namespace InterviewPrep.Arrays
             int length = str.Length;
             Boolean[] used = new Boolean[length];
             StringBuilder outt = new StringBuilder();
-            char[] inn = str.ToCharArray();
+            char[] charr = str.ToCharArray();
 
-            DoPermute(inn, outt, used, length, 0);
+            DoPermute(charr, outt, used, 0);
         }
 
 
-        public static void DoPermute (char[] inn, StringBuilder outt, Boolean[] used, int length, int level)
+        public static void DoPermute (char[] charr, StringBuilder outt, Boolean[] used, int ind)
         {
-            if (level == length)
+            int i;
+            if (ind == (charr.Length))
             {
                 Console.WriteLine(outt.ToString());
                 return;
             }
-            for (int i=0; i< length; ++i)
-            {
-                outt.Append(inn[i]);
-                used[i] = true;
-                DoPermute(inn, outt, used, length, level + 1);
-                used[i] = false;
-                outt.Length = 0;
+            for (i=0; i<charr.Length; i++){
+                if (used[i] == false)
+                {
+                    outt.Append(charr[i]);
+                    used[i] = true;
+                    DoPermute(charr, outt, used, ind + 1);
+                    used[i] = false;
+                    outt.Length -= 1;
+                }
             }
 
         }
@@ -408,6 +411,50 @@ namespace InterviewPrep.Arrays
 
             Console.WriteLine(arr[qi.PeekFront()]);
         }
+
+        public static void FindSameProductPairs(int[] arr)
+        {
+            int i, j, prod;
+            int n = arr.Length;
+            Tuple<int, int> t1;
+            Dictionary<int, List<Tuple<int, int>>> d = new Dictionary<int, List<Tuple<int, int>>>() ;
+            for (i=0;i<(n-1); i++)
+            {
+                for (j=(i+1);j<n;j++)
+                {
+                    prod = arr[i] * arr[j];
+
+                    t1 = Tuple.Create(arr[i], arr[j]);
+
+                    if (d.ContainsKey(prod))
+                    {
+                        d[prod].Add(t1);
+                    }
+                    else
+                    {
+                        List<Tuple<int, int>> emptyList = new List<Tuple<int, int>>();
+                        d.Add(prod, emptyList);
+                        d[prod].Add(t1);
+                    }
+                }
+            }
+
+            foreach (int product in d.Keys)
+            {
+                Console.Out.Write(product + "-");
+                foreach (Tuple<int, int> tup in d[product])
+                {
+                    Console.Out.Write(tup.Item1 + "," + tup.Item2 + " || ");
+                }
+                Console.Out.WriteLine("");
+            }
+
+            
+        }
+
+
+
+
 
 
 

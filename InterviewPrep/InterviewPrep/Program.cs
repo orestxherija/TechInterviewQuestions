@@ -9,6 +9,7 @@ using InterviewPrep.Arrays;
 using InterviewPrep.Recursion;
 using InterviewPrep.Dequeue;
 using InterviewPrep.Dequeue.Generic;
+using InterviewPrep.MinStack;
 
 namespace InterviewPrep
 {
@@ -16,6 +17,9 @@ namespace InterviewPrep
     {
         static void Main(string[] args)
         {
+
+            DoubleArray.Permute("ABC");
+
             int xxx;
             for (xxx =2; xxx>1; --xxx)
             {
@@ -23,7 +27,22 @@ namespace InterviewPrep
             }
 
             //Double[] a = Recursion.GenericArray<Double>.MergeSort(new Double[]{ 5,4,3,2},0,3);
-            
+
+            int[] array1 = new int[]{1, 2, 3,6 };
+            DoubleArray.FindSameProductPairs(array1);
+
+            MinStack.MinStack ms = new MinStack.MinStack();
+            ms.Push(5);
+            ms.Push(6);
+            ms.Push(4);
+            ms.Push(3);
+            int pm2 = ms.PeekMin();
+            ms.Pop();
+            int pm3 = ms.PeekMin();
+            ms.Pop();
+            int pm1 = ms.PeekMin();
+
+
             LinkedList ll = new LinkedList();
             LinkedList ll2 = new LinkedList();
 
@@ -128,6 +147,9 @@ namespace InterviewPrep
             Node n10 = new Node(n7, n12, 10);
             Node n5 = new Node(n3, n10, 5); // root
 
+            Node t2 = Node.BiggestBetweenBSTNodes(n5, n4, n10);
+
+
             int result0 = Node.FirstKthSumHelper(n5, 3);
             Console.WriteLine("=================");
             List<int> emptyList = new List<int>();
@@ -188,7 +210,7 @@ namespace InterviewPrep
             // If it was non-static, we would call it via - a.BinarySeach()
             //int res = DoubleArray.BinarySearchIter(d2, 0, d2.Length,21);
             //Console.Out.Write(res);
-            //DoubleArray.Permute("Pan");
+            //
             //DoubleArray.PrintPermutation(d1);
 
         }

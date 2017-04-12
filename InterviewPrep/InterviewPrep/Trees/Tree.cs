@@ -80,8 +80,8 @@ namespace InterviewPrep.Tree
                 return null;
             }
             Node newNode = new Node(null, null, root.Value);
-            newNode.Left= CopyTheTree(root.Left);
-            newNode.Right= CopyTheTree(root.Right);
+            newNode.Left = CopyTheTree(root.Left);
+            newNode.Right = CopyTheTree(root.Right);
             return newNode;
         }
 
@@ -171,6 +171,29 @@ namespace InterviewPrep.Tree
         }
 
 
+        public static Node BiggestBetweenBSTNodes(Node root, Node n1, Node n2)
+        {
+            Node biggerNode;
+            Node smallerNode;
+            if (n1.Value <= n2.Value) //Check which node is bigger
+            {
+                biggerNode = n2;
+                smallerNode = n1;
+            }
+            else { biggerNode = n1; smallerNode = n2; }
+
+            Node parent;
+            parent = FindParent(root, biggerNode); // We need to only check the bigger node's parent
+
+            while (parent.Right != biggerNode) // If bigger node is the right child of parent, that's the biggest node between BST.
+            {
+                biggerNode = parent;
+                parent = FindParent(root, biggerNode); // Traverse the parents until the bigger node is the right child of the parent.
+            }
+            return biggerNode;
+        }
+
+
         public static Node FindParent(Node root, Node node)
         {
             if (root == null || node == null)
@@ -184,12 +207,10 @@ namespace InterviewPrep.Tree
             else
             {
                 Node found = FindParent(root.Right, node);
-
                 if (found == null)
                 {
                     found = FindParent(root.Left, node);
                 }
-
                 return found;
             }
         }
@@ -313,8 +334,8 @@ namespace InterviewPrep.Tree
             else if (level > 0)
             {
                 Console.WriteLine(root);
-                LevelOrderPrint(root.Left, level-1);
-                LevelOrderPrint(root.Right, level-1);
+                LevelOrderPrint(root.Left, level - 1);
+                LevelOrderPrint(root.Right, level - 1);
             }
             else
             {
@@ -322,11 +343,11 @@ namespace InterviewPrep.Tree
                 Console.WriteLine(root.Right);
             }
         }
-        
+
 
 
 
 
 
     }
-} 
+}
