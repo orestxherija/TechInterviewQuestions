@@ -36,7 +36,7 @@ namespace InterviewPrep.StringsArrays
             int tail = 0;
             int i, j;
             for (i = 0; i < c.Length; i++)
-            {
+            { 
                 for (j = 0; j < i+1; j++)
                 {
                     if ((c[i] == c[j]) && (i!= j))
@@ -53,6 +53,35 @@ namespace InterviewPrep.StringsArrays
             return new string (c, 0, tail);
         }
 
+
+        // Implemented again for better intuition.
+        public static string RemoveDupChar2(string str)
+        {
+            char[] c = str.ToCharArray();
+            int len = c.Length  ;
+            int i,j,tail;
+            tail = 0;
+            for (i=0; i<len ; i++)
+            {
+                if (i == len -1) { c[tail] = c[i]; tail++; break; }
+
+                for (j=i+1; j< len;j++)
+                {
+                    if ( c[i] == c[j])
+                        { break; }
+                    if (j == len -1)
+                    {   
+                        c[tail] = c[i];
+                        tail++;
+                    }
+                }
+            }
+            return new string(c, 0, tail);
+        }
+
+
+
+        //This is O(nlogn). Simple count with Dictionary will be O(n)
         public static bool AreTheseAnagrams(string s1, string s2)
         {
             int i = 0;

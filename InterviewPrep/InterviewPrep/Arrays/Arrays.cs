@@ -343,6 +343,33 @@ namespace InterviewPrep.Arrays
             return numberOfWays;            
         }
 
+
+
+        /// <summary>
+        /// We are going to fill the biggest coins one by one.
+        /// </summary>
+        /// <param name="n"> the amount of money </param>
+        public static void MakeChange (int n)
+        {
+            int n1, n2, n3; // residual of amount after each coin
+            int quarter, dime, nickel; // These are number of 25c, 10c, 5c, 1c
+            for (quarter = n/25; quarter >= 0; quarter--)
+            {
+                n1 = n - 25 * quarter;
+                for (dime = n1/10; dime >= 0; dime--)
+                {
+                    n2 = n1 - 10 * dime;
+                    for (nickel = n2/5; nickel >= 0 && (n2 - 5*nickel) >= 0; nickel--)
+                    {
+                        n3 = n2 - 5 * nickel;
+                        Console.WriteLine("{0},{1},{2},{3}", quarter, dime, nickel, n3); // n3 becomes the number of cent.
+                    }
+                }
+            }
+        }
+
+
+
         public static Stack<int> SpiralTraverse(int[,] arr)
         {
             Stack<int> trav = new Stack<int>();

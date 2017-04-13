@@ -19,6 +19,7 @@ namespace InterviewPrep
         {
 
             DoubleArray.Permute("ABC");
+            DoubleArray.MakeChange(35);
 
             int xxx;
             for (xxx =2; xxx>1; --xxx)
@@ -70,6 +71,7 @@ namespace InterviewPrep
 
             bool unique = StringsArrays.Strings.StringContainsAllUnique("chrism");
             string RemoveDuplicatedCharacters = StringsArrays.Strings.RemoveDuplicatedCharacters("aqbcd");
+            string xx2 = StringsArrays.Strings.RemoveDupChar2("abbbbbc");
 
             bool anagram = StringsArrays.Strings.AreTheseAnagrams("iceman","cinema");
 
