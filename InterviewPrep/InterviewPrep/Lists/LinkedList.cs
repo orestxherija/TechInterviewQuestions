@@ -66,60 +66,6 @@ namespace InterviewPrep
             }
 
 
-
-            public LinkedList ElementSum(LinkedList other)
-            {
-                LinkedList linkedListSum = new LinkedList();
-                this.Reverse();
-                other.Reverse();
-                Node n1 = this.head;
-                Node n2 = other.head;
-                int passAround = 0 ;
-                int leftover = 0;
-                int tempSum = 0;
-            while ((n1 != null) || (n2!= null))
-                {
-                int num1 = ( n1==null ? 0: (int)n1.NodeContent);
-                int num2 = ( n2 == null ? 0 : (int)n2.NodeContent);
-                tempSum = num1 + num2 + passAround;
-                passAround = (int)(tempSum / 10);
-                leftover = tempSum % 10;
-                linkedListSum.Add(leftover);
-                n1 = (n1 == null ? null : n1.Next);
-                n2 = (n2 == null ? null : n2.Next);
-                }
-            this.Reverse();
-            other.Reverse();
-            linkedListSum.Reverse();
-            return linkedListSum; 
-        }
-
-
-
-
-        public LinkedList ElementSumElegant(LinkedList other)
-        {
-            LinkedList linkedListSum = new LinkedList();
-            this.Reverse();
-            other.Reverse();
-            Node n1 = this.head, n2 = other.head;
-            int toAdd = 0, carryOver = 0;
-            while ((n1 != null) || (n2 != null))
-            {
-                int num1 = (int) (n1 == null ? 0 : n1.NodeContent);
-                int num2 = (int) (n2 == null ? 0 : n2.NodeContent);
-                toAdd = (num1 + num2 + carryOver) % 10;
-                carryOver = (int)(num1 + num2 + carryOver) / 10;
-                linkedListSum.Add(toAdd);
-                n1 = (n1 == null ? null : n1.Next);
-                n2 = (n2 == null ? null : n2.Next);
-            }
-            this.Reverse();
-            other.Reverse();
-            linkedListSum.Reverse();
-            return linkedListSum;
-        }
-
             /// <summary>
             /// Add a new Node to the list.
             /// </summary>
@@ -235,10 +181,71 @@ namespace InterviewPrep
 
                 return false;
             }
+
+
+
+
+
+
+        public LinkedList ElementSum(LinkedList other)
+        {
+            LinkedList linkedListSum = new LinkedList();
+            this.Reverse();
+            other.Reverse();
+            Node n1 = this.head;
+            Node n2 = other.head;
+            int passAround = 0;
+            int leftover = 0;
+            int tempSum = 0;
+            while ((n1 != null) || (n2 != null))
+            {
+                int num1 = (n1 == null ? 0 : (int)n1.NodeContent);
+                int num2 = (n2 == null ? 0 : (int)n2.NodeContent);
+                tempSum = num1 + num2 + passAround;
+                passAround = (int)(tempSum / 10);
+                leftover = tempSum % 10;
+                linkedListSum.Add(leftover);
+                n1 = (n1 == null ? null : n1.Next);
+                n2 = (n2 == null ? null : n2.Next);
+            }
+            this.Reverse();
+            other.Reverse();
+            linkedListSum.Reverse();
+            return linkedListSum;
         }
-    
 
 
 
+
+        public LinkedList ElementSumElegant(LinkedList other)
+        {
+            LinkedList linkedListSum = new LinkedList();
+            this.Reverse();
+            other.Reverse();
+            Node n1 = this.head, n2 = other.head;
+            int toAdd = 0, carryOver = 0;
+            while ((n1 != null) || (n2 != null))
+            {
+                int num1 = (int)(n1 == null ? 0 : n1.NodeContent);
+                int num2 = (int)(n2 == null ? 0 : n2.NodeContent);
+                toAdd = (num1 + num2 + carryOver) % 10;
+                carryOver = (int)(num1 + num2 + carryOver) / 10;
+                linkedListSum.Add(toAdd);
+                n1 = (n1 == null ? null : n1.Next);
+                n2 = (n2 == null ? null : n2.Next);
+            }
+            this.Reverse();
+            other.Reverse();
+            linkedListSum.Reverse();
+            return linkedListSum;
+        }
+
+
+
+
+
+
+
+    }
 
 }

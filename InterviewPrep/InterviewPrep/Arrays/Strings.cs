@@ -111,16 +111,6 @@ namespace InterviewPrep.StringsArrays
             return xCopy;
         }
 
-        public static bool IsRotation (string s1, string s2)
-        {
-            bool yesOrNo = false;
-
-
-
-            return yesOrNo;
-        }
-
-
 
         public static int StringToSignedInteger(string str)
         {
